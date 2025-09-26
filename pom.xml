@@ -5,15 +5,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.6</version>
+
+		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>devops2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>devops</artifactId>
+	<version>1.5.6-RELEASE</version>
 	<packaging>war</packaging>
-	<name>devops2</name>
-	<description>Devops Demo Project</description>
+	<name>devops</name>
+	<description>DevOps Demo Project</description>
+
+
 	<url/>
 	<licenses>
 		<license/>
@@ -21,6 +24,34 @@
 	<developers>
 		<developer/>
 	</developers>
+
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+
+	<distributionManagement>
+        	<repository>
+    			<id>release</id>
+    			<name>releases</name>
+    			<url>http://localhost:8081/artifactory/libs-release-local</url>
+  		</repository>
+  		<snapshotRepository>
+    			<id>snapshot</id>
+    			<name>snapshots</name>
+    			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+  		</snapshotRepository>
+	</distributionManagement> 
+	<scm>
+  		<connection>scm:git:git@github.com:emaillalit/devops-practice.git</connection>
+  		<developerConnection>scm:git:git@github.com:emaillalit/devops-practice.git</developerConnection>
+  		<url>git@github.com:emaillalit/devops-practice.git</url>
+  		<tag>HEAD</tag>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -57,7 +88,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+
+			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-release-plugin</artifactId>
+  				<version>2.5.1</version>
+  				<configuration>
+    					<tagNameFormat>v@{project.version}</tagNameFormat>
+    					<autoVersionSubmodules>true</autoVersionSubmodules>
+  				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
